@@ -3,7 +3,7 @@ import pandas as pd
 import os
 from twilio.rest import Client
 STOCK = "GOOGL"
-COMPANY_NAME = "Nividia"
+COMPANY_NAME = "Google"
 
 STOCK_ENDPOINT = "https://www.alphavantage.co/query"
 NEWS_ENDPOINT = "https://newsapi.org/v2/everything"
@@ -61,7 +61,7 @@ message = client.messages \
                 .create(
                      body=text,
                      from_='+18777647140',
-                     to="4089962669"
+                     to=os.environ["MY_NUMBER"]
                  )
 
 
