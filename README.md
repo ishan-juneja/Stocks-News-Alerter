@@ -15,6 +15,11 @@ This program messages you relevant news of any stock you wish to track that has 
 
 ## Demo
 The stocks info we enter in `main.py` to track.
-<img width="193" alt="Screenshot 2023-07-05 at 9 34 48 AM" src="https://github.com/ishan-juneja/Stocks-News-Alerter/assets/69048541/19c67d3c-fa75-4a11-9177-03e989d858f4">
+
+<img width="186" alt="Screenshot 2023-07-05 at 9 56 43 AM" src="https://github.com/ishan-juneja/Stocks-News-Alerter/assets/69048541/f5693d20-ad7e-4aac-ba65-e51e77a23e01">
 
 If there is a net 5 percent change (the program is currently set to ignore its test for testing purposes), then we get a text message with all the relevant news.
+
+<img width="1409" alt="Screenshot 2023-07-05 at 9 56 01 AM" src="https://github.com/ishan-juneja/Stocks-News-Alerter/assets/69048541/d0ac06a8-856e-4b4a-81df-2917e9b49fe7">
+
+(The above data will be sent to your phone via text format)
