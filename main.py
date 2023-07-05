@@ -2,8 +2,8 @@ import requests
 import pandas as pd
 import os
 from twilio.rest import Client
-STOCK = "GOOGL"
-COMPANY_NAME = "Google"
+STOCK = "AAPL"
+COMPANY_NAME = "Apple"
 
 STOCK_ENDPOINT = "https://www.alphavantage.co/query"
 NEWS_ENDPOINT = "https://newsapi.org/v2/everything"
@@ -29,13 +29,11 @@ change_percent = open_price/close_price
 check_news = False
 if(close_price * 0.05 <= abs(open_price-close_price)):
     check_news = True
-check_news = True
-print(check_news)
 
 
 
 # Instead of printing ("Get News"), actually fetch the first 3 articles for the COMPANY_NAME.
-keyload2 = {"q":f"{STOCK}", "apiKey":NEWS_API_KEY, "pageSize": 3}
+keyload2 = {"q":f"{COMPANY_NAME}", "apiKey":NEWS_API_KEY, "pageSize": 3}
 
 response = requests.get("https://newsapi.org/v2/top-headlines?", params=keyload2)
 news_json = response.json()
@@ -43,13 +41,10 @@ df = pd.DataFrame.from_dict(news_json)
 news_list = []
 for i, j in df.iterrows():
     news_list.append(j.get("articles"))
-
-
 # Send a separate message with each article's title and description to your phone number.
 text = f"{STOCK}: {round(change_percent,3)}%\n\n"
 for article in news_list:
     text = text + "Headline: " + article['title'] + "\nBrief: " + article["description"] + "\n\n"
-
 
 # Find your Account SID and Auth Token at twilio.com/console
 # and set the environment variables. See http://twil.io/secure
@@ -57,6 +52,7 @@ account_sid = os.environ.get("ACCOUNT_SID")
 auth_token = os.environ.get("AUTH_TOKEN")
 client = Client(account_sid, auth_token)
 
+print(text)
 message = client.messages \
                 .create(
                      body=text,
